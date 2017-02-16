@@ -1,0 +1,97 @@
+Call Go from PHP for speed and performance
+16  Feb 2017
+
+Matej Baćo
+@matejbaco
+
+* Problem
+
+Find out average distrubution of site visits per day of the week and hour.
+
+Sample will be Apache access log that contains 2 months of data, 356MB.
+
+* PHP solution
+
+.iframe code/script.php 600 800
+
+* PHP solution
+
+  > php -v
+  PHP 7.1.1 (cli) (built: Jan 21 2017 13:36:56) ( NTS )
+
+  > time php ./code/script.php
+  Elapsed: 3.9250140190125 sec
+
+  real	0m4.002s
+  user	0m3.881s
+  sys	 0m0.104s
+
+* Go solution
+
+.iframe sample/go_simple_main.go 600 800
+
+* Go solution
+
+.iframe sample/go_chunk.go 600 800
+
+* Go solution
+
+.iframe sample/go_extract.go 600 800
+
+* Go solution
+
+.iframe sample/go_sum.go 600 800
+
+* Go solution
+
+  > time go run code/simple.go
+  Elapsed: 1.7761713920000002 sec
+
+  real	0m2.064s
+  user	0m9.224s
+  sys	 0m0.777s
+
+* Call Go from PHP
+
+As a PHP extension:
+
+.link https://github.com/arnaud-lb/php-go github.com/arnaud-lb/php-go
+.link https://github.com/kitech/php-go github.com/kitech/php-go
+
+
+Build as c-shared library
+
+      go build -o extension.so -buildmode c-shared .
+
+* Call Go from PHP
+
+Make a web server from Go program
+
+.iframe sample/go_webserver.go 600 800
+
+* Real MapReduce
+
+Glow an easy-to-use distributed computation system.
+
+.link https://github.com/chrislusf/glow Glow on github
+
+* Glow
+
+.iframe sample/glow_main.go 600 800
+
+* Glow
+
+.iframe sample/glow_htmlLogs.go 600 800
+
+* Glow
+
+  > time go run code/glow.go
+  Elapsed: 4.767762259 sec
+
+  real	0m5.243s
+  user	0m23.750s
+  sys     0m1.925s
+
+* Overall
+
+.image images/graph.png
